@@ -3,7 +3,7 @@ game 'gta5'
 
 author 'Niknock HD'
 description 'NKHD Prop Placer'
-version '1.0.0'
+version '1.1.0'
 
 server_scripts {
     '@es_extended/locale.lua',
@@ -19,6 +19,12 @@ client_scripts {
 
 shared_scripts {
     'config.lua'
+}
+
+ui_page 'html/index.html'
+
+files {
+    'html/index.html'
 }
 
 dependencies {
