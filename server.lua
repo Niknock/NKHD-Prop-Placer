@@ -6,20 +6,20 @@ for itemName, propModel in pairs(Config.Props) do
         local xPlayer = ESX.GetPlayerFromId(source)
 
         if xPlayer.getInventoryItem(itemName).count > 0 then
-            TriggerClientEvent("esx_propplacer:startPlacement", source, propModel, itemName)
+            TriggerClientEvent("nkhd_propplacer:startPlacement", source, propModel, itemName)
             xPlayer.removeInventoryItem(itemName, 1)
         else
         end
     end)
 end
 
-RegisterNetEvent("esx_propplacer:placeProp")
-AddEventHandler("esx_propplacer:placeProp", function(propModel, coords, heading)
-    TriggerClientEvent("esx_propplacer:syncProp", -1, propModel, coords, heading)
+RegisterNetEvent("nkhd_propplacer:placeProp")
+AddEventHandler("nkhd_propplacer:placeProp", function(propModel, coords, heading)
+    TriggerClientEvent("nkhd_propplacer:syncProp", -1, propModel, coords, heading)
 end)
 
-RegisterNetEvent("esx_propplacer:returnItem")
-AddEventHandler("esx_propplacer:returnItem", function(propModel)
+RegisterNetEvent("nkhd_propplacer:returnItem")
+AddEventHandler("nkhd_propplacer:returnItem", function(propModel)
     local xPlayer = ESX.GetPlayerFromId(source)
 
     if not propModel then
@@ -34,8 +34,8 @@ AddEventHandler("esx_propplacer:returnItem", function(propModel)
     end
 end)
 
-RegisterNetEvent("esx_propplacer:returnItemCancel")
-AddEventHandler("esx_propplacer:returnItemCancel", function(itemName2)
+RegisterNetEvent("nkhd_propplacer:returnItemCancel")
+AddEventHandler("nkhd_propplacer:returnItemCancel", function(itemName2)
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.addInventoryItem(itemName2, 1)
 end)
