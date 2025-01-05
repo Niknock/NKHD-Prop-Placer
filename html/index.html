@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prop Instructions</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: transparent;
+        }
+
+        .instructions {
+            position: fixed;
+            right: 1%;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 250px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none; 
+        }
+
+        .instructions.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions" id="instructionBox">
+        <p><strong>Prop Movement:</strong></p>
+        <p>Scroll: Adjust distance</p>
+        <p>[Left/Right Arrow]: Rotate</p>
+        <p>[Enter]: Place prop</p>
+        <p>[Backspace]: Cancel</p>
+    </div>
+
+    <script>
+        window.addEventListener("message", (event) => {
+            const instructionBox = document.getElementById("instructionBox");
+            if (event.data.action === "show") {
+                instructionBox.classList.add("visible");
+            } else {
+                instructionBox.classList.remove("visible");
+            }
+        });
+    </script>
+</body>
+</html>
