@@ -17,8 +17,8 @@ function playAnimation(dict, anim, freeze)
     TaskPlayAnim(PlayerPedId(), dict, anim, 8.0, -8.0, -1, freeze and 49 or 0, 0, false, false, false)
 end
 
-RegisterNetEvent("esx_propplacer:startPlacement")
-AddEventHandler("esx_propplacer:startPlacement", function(propModel, itemName)
+RegisterNetEvent("nkhd_propplacer:startPlacement")
+AddEventHandler("nkhd_propplacer:startPlacement", function(propModel, itemName)
     itemName2 = itemName
     if not propModel then
         return
@@ -85,7 +85,7 @@ CreateThread(function()
                 DeleteEntity(currentPreview)
                 currentPreview = nil
             
-                TriggerServerEvent("esx_propplacer:placeProp", propModel, finalCoords, finalHeading)
+                TriggerServerEvent("nkhd_propplacer:placeProp", propModel, finalCoords, finalHeading)
                 ClearPedTasks(PlayerPedId())
                 itemName2 = ""
                 hideInstructions()
@@ -95,7 +95,7 @@ CreateThread(function()
                 isPlacing = false
                 DeleteEntity(currentPreview)
                 currentPreview = nil
-                TriggerServerEvent("esx_propplacer:returnItemCancel", itemName2)
+                TriggerServerEvent("nkhd_propplacer:returnItemCancel", itemName2)
                 ESX.ShowNotification(Config.NotCancel)
                 itemName2 = ""
                 hideInstructions()
@@ -118,8 +118,8 @@ end
 
 local placedProps = {} 
 
-RegisterNetEvent("esx_propplacer:syncProp")
-AddEventHandler("esx_propplacer:syncProp", function(propModel, coords, heading)
+RegisterNetEvent("nkhd_propplacer:syncProp")
+AddEventHandler("nkhd_propplacer:syncProp", function(propModel, coords, heading)
     RequestModel(propModel)
     while not HasModelLoaded(propModel) do
         Wait(100)
@@ -163,7 +163,7 @@ function removeProp(prop)
 
         exports.ox_target:removeEntity(prop)
 
-        TriggerServerEvent("esx_propplacer:returnItem", propModel)
+        TriggerServerEvent("nkhd_propplacer:returnItem", propModel)
         ClearPedTasks(playerPed)
     end
 end
