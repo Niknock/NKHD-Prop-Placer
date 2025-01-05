@@ -8,6 +8,6 @@ Config.Props = {
 
 Config.PickupDistance = 2.0
 
+Config.Remove = "Remove Prop"
 Config.NotAlreadyPlacing = "You are already placing an Prop!"
-Config.NotPlace = "Move the mouse to place the prop and [Enter] to set it. Scroll to adjust the distance."
 Config.NotCancel = "You canceled the placement."
